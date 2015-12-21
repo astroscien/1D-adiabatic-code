@@ -16,8 +16,6 @@ use forcing
 implicit none
 real (dp) :: omegasq
 integer ::  i,eqnnum,varnum,ndiag
-!integer :: ell
-!ell=2
 
 a=0.d0
 b=0.d0
@@ -28,7 +26,7 @@ ndiag=nleft+1
 ! at r=1e-3 boundary condition
 eqnnum=1
 varnum=iphi
-a(eqnnum,varnum-eqnnum+ndiag) = ell/g%r(1)	
+a(eqnnum,varnum-eqnnum+ndiag) = f%ell/g%r(1)	
 varnum=igprime
 a(eqnnum,varnum-eqnnum+ndiag) = -1.d0
 
@@ -39,7 +37,7 @@ eqnnum=2
 varnum=ixi
 a(eqnnum,varnum-eqnnum+ndiag) = omegasq
 varnum=ipsi
-a(eqnnum,varnum-eqnnum+ndiag) = -ell/g%r(1)
+a(eqnnum,varnum-eqnnum+ndiag) = -f%ell/g%r(1)
 
 b(eqnnum)=0.d0
 
@@ -119,7 +117,7 @@ end do
 ! at r=R boundary condition
 eqnnum=4*g%n-1
 varnum= -1 + 4*g%n					! 4N-1
-a(eqnnum,varnum-eqnnum+ndiag) = (ell+1.d0)/g%r(g%n)
+a(eqnnum,varnum-eqnnum+ndiag) = (f%ell+1.d0)/g%r(g%n)
 varnum= 4*g%n						! 4N
 a(eqnnum,varnum-eqnnum+ndiag) = 1.d0
 
