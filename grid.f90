@@ -2,7 +2,6 @@
 module grid
 use defs, only : dp
 implicit none
-integer, parameter :: ell=2
 type gridtype
   integer :: n
 !  real (dp) :: delta
